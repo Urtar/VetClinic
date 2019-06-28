@@ -4,16 +4,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.validation.constraints.NotEmpty;
 @Entity
-public class Messages {
+public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String text;
+    @NotEmpty
+    private String password;
 
-    public Messages() {
+    public Admin() {
     }
 
     public long getId() {
@@ -24,11 +25,11 @@ public class Messages {
         this.id = id;
     }
 
-    public String getText() {
-        return text;
+    public String getPassword() {
+        return password;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
