@@ -11,13 +11,24 @@ public class PetType {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @NotEmpty
-    private String petType;
+    private String name;
 
     @OneToMany(mappedBy = "petType")
     private List<Race> races;
 
-    public PetType(@NotEmpty String petType) {
-        this.petType = petType;
+    @OneToMany(mappedBy = "petType")
+    private List<Pet> pet;
+
+
+    public PetType() {
+    }
+
+    public List<Pet> getPet() {
+        return pet;
+    }
+
+    public void setPet(List<Pet> pet) {
+        this.pet = pet;
     }
 
     public long getId() {
@@ -28,12 +39,12 @@ public class PetType {
         this.id = id;
     }
 
-    public String getPetType() {
-        return petType;
+    public String getName() {
+        return name;
     }
 
-    public void setPetType(String petType) {
-        this.petType = petType;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Race> getRaces() {

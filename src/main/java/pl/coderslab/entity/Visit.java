@@ -1,10 +1,7 @@
 package pl.coderslab.entity;
 
-import org.springframework.data.annotation.CreatedDate;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -13,26 +10,27 @@ public class Visit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotNull
-    @CreatedDate
     private LocalDateTime dateOfVisit;
-    @CreatedDate
     private LocalDateTime updated;
     @NotEmpty
     private String description;
-
     @OneToMany(mappedBy = "visit")
     private List<Recipe> recipes;
-
     @ManyToOne
     private Vet vet;
-
     @ManyToOne
     private Pet pet;
 
-    public Visit(@NotNull LocalDateTime dateOfVisit) {
-        this.dateOfVisit = dateOfVisit;
+    public Visit() {
     }
+
+    @PrePersist
+    public void prePersist() {
+        dateOfVisit = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {updated = LocalDateTime.now();}
 
     public long getId() {
         return id;

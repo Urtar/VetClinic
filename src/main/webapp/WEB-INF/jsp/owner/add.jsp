@@ -16,7 +16,9 @@
     <form:errors path="pesel"/>
     Login: <form:input path="login"/>
     <form:errors path="login"/>
-    Password: <form:input path="password"/>
+    Password: <form:input type='password' path="password"/>
     <form:errors path="password"/>
     <input type="submit" value="Dodaj">
 </form:form>
+<br/>
+<a href="/owner/list">Powrót do poprzedniej strony</a>

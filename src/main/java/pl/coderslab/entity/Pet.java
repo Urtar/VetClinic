@@ -19,20 +19,27 @@ public class Pet {
     private String gender;
     @NotNull
     private long chipNumber;
-
     @ManyToOne
     private Owner owner;
-
     @ManyToOne
     private Race race;
-
+    @ManyToOne
+    private PetType petType;
     @OneToOne
     private Recipe recipe;
 
     @OneToMany(mappedBy = "pet")
-    private List<Visit>visits;
+    private List<Visit> visits;
 
     public Pet() {
+    }
+
+    public PetType getPetType() {
+        return petType;
+    }
+
+    public void setPetType(PetType petType) {
+        this.petType = petType;
     }
 
     public long getId() {

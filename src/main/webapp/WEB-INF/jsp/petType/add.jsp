@@ -4,6 +4,9 @@
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
-<div style="border: blue"><p>Nie masz uprawnień do zakładania, przeglądania i edytowania kont właścicieli</p></div>
-<br/>
-<a href="/vetclinic">Strona główna</a>
+<form:form method="POST"
+           modelAttribute="petType">
+    Gatunek: <form:input path="name"/>
+    <form:errors path="name"/>
+    <input type="submit" value="Dodaj">
+</form:form>

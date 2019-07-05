@@ -5,3 +5,5 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <div style="border: blue"><p>Nie masz uprawnień do zakładania i edytowania kont lekarzy</p></div>
+<br/>
+<a href="/vetclinic">Strona główna</a>

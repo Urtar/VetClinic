@@ -4,13 +4,12 @@
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
+Numer pesel właściciela: ${ownerPesel} <br/>
 <form:form method="POST"
-           modelAttribute="visit">
-    Lekarz: ${vetName}<br/>
+           modelAttribute="recipe">
     Imię zwierzęcia: ${petName} <br/>
-    Opis: <br/>
-    <form:textarea rows="30" cols="150" path="description"/>
-    <form:errors path="description"/>
-    <br/>
-    <input type="submit" value="Dodaj">
+    Opis: ${recipe.description} <br/>
+
+    <a href="/recipe/add">Dodaj receptę</a> <br/>
+    <a href="/recipe/list">Wróć do poprzedniej strony</a>
 </form:form>

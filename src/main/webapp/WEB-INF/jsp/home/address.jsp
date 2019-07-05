@@ -4,6 +4,8 @@
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
-<div style="border: blue"><p>Nie masz uprawnień do zakładania, przeglądania i edytowania kont właścicieli</p></div>
-<br/>
+<h1>Vet Clinic - klinika weterynaryjna</h1>
+<h2>Ulica: Karolkowa</h2>
+<h2>Kod: 00-000 Warszawa</h2>
+
 <a href="/vetclinic">Strona główna</a>

@@ -10,7 +10,9 @@
     <input type="hidden" value="login" name="action"/>
     <input type = "submit" value = "Zaloguj"/>
 </form:form>
-<form:form method = "post" modelAttribute="viewMode">
-    <input type="hidden" value="register" name="action"/>
-    <input type = "submit" value = "Zarejestruj"/>
-</form:form>
+<%--<form:form method = "post" modelAttribute="viewMode">--%>
+<%--    <input type="hidden" value="register" name="action"/>--%>
+<%--    <input type = "submit" value = "Zarejestruj"/>--%>
+<%--</form:form>--%>
+
+<a href="/vetclinic">Strona główna</a>

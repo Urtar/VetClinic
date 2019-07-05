@@ -11,16 +11,14 @@ public class Race {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @NotEmpty
-    private String race;
-
+    private String name;
     @OneToMany(mappedBy = "race")
     private List<Pet> pets;
 
     @ManyToOne
     private PetType petType;
 
-    public Race(@NotEmpty String race) {
-        this.race = race;
+    public Race() {
     }
 
     public long getId() {
@@ -31,12 +29,12 @@ public class Race {
         this.id = id;
     }
 
-    public String getRace() {
-        return race;
+    public String getName() {
+        return name;
     }
 
-    public void setRace(String race) {
-        this.race = race;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Pet> getPets() {

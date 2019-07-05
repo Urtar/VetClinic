@@ -3,12 +3,10 @@ package pl.coderslab.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import pl.coderslab.entity.Owner;
+import pl.coderslab.entity.Admin;
 
-@Transactional
 @Repository
-public interface OwnerRepository extends JpaRepository<Owner, Long> {
-    Owner findByLogin(String login);
-
-
+@Transactional
+public interface AdminRepository extends JpaRepository<Admin,Long> {
+    Admin findByLogin(String login);
 }

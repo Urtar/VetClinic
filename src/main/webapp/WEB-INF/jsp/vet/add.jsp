@@ -14,7 +14,7 @@
     <form:errors path="title"/>
     Login: <form:input path="login"/>
     <form:errors path="login"/>
-    Password: <form:input path="password"/>
+    Password: <form:input type="password" path="password"/>
     <form:errors path="password"/>
     <input type="submit" value="Dodaj">
 </form:form>

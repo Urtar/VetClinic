@@ -4,10 +4,17 @@
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
+Numer pesel właściciela: ${ownerPesel} <br/>
+
 <form:form method="POST"
            modelAttribute="recipe">
-    Numer pesel właściciela: <form:select path="owner" items="${allOwners}" itemLabel="pesel" itemValue="id" /> <br/>
-    Opis: <form:input path="description"/>
-    <form:errors path="description"/>
+    <c:forEach items="${allVisitRecipes}" var="visitRecipe">
+        <a href="/recipe/${visitRecipe.id}/details"><p>Szczegóły recepty z dnia ${visitRecipe.visit.dateOfVisit}</p></a></br>
+    </c:forEach>
+    Opis: <br/>
+    <form:input path="description"/> <br/>
+    <form:errors path="description"/> <br/>
     <input type="submit" value="Dodaj">
 </form:form>
+<br/>
+<a href="/visit/list">Lista wizyt</a>

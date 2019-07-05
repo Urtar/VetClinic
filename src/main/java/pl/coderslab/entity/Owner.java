@@ -1,11 +1,10 @@
 package pl.coderslab.entity;
 
-import org.hibernate.validator.constraints.UniqueElements;
+import org.hibernate.validator.constraints.pl.PESEL;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -18,11 +17,12 @@ public class Owner {
     private String firstName;
     @NotEmpty
     private String lastName;
-    @NotNull
-    private long Pesel;
+    @PESEL
+    private String Pesel;
     @Email
     private String email;
-    @UniqueElements
+    @Column(unique = true)
+    //@LoginValid()
     private String login;
     @NotEmpty
     private String password;
@@ -57,11 +57,11 @@ public class Owner {
         this.lastName = lastName;
     }
 
-    public long getPesel() {
+    public String getPesel() {
         return Pesel;
     }
 
-    public void setPesel(long pesel) {
+    public void setPesel(String pesel) {
         Pesel = pesel;
     }
 

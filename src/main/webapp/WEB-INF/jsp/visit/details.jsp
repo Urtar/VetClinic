@@ -6,11 +6,11 @@
 
 <form:form method="POST"
            modelAttribute="visit">
-    Lekarz: ${vetName}<br/>
+    Lekarz: ${vetName} <br/>
     Imię zwierzęcia: ${petName} <br/>
-    Opis: <br/>
-    <form:textarea rows="30" cols="150" path="description"/>
-    <form:errors path="description"/>
-    <br/>
-    <input type="submit" value="Dodaj">
+    Opis: ${visit.description}
+
+    <a href="/recipe/add">Dodaj receptę</a> <br/>
+    <a href="/visit/list">Powrót do poprzedniej strony</a>
 </form:form>
+

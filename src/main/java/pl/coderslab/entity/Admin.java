@@ -1,9 +1,6 @@
 package pl.coderslab.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 @Entity
 public class Admin {
@@ -11,10 +8,21 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(unique = true)
+    //@LoginValid()
+    private String login;
     @NotEmpty
     private String password;
 
     public Admin() {
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public long getId() {

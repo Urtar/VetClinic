@@ -1,10 +1,7 @@
 package pl.coderslab.entity;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -18,7 +15,8 @@ public class Vet {
     private String lastName;
     @NotEmpty
     private String title;
-    @UniqueElements
+    @Column(unique = true)
+    //@LoginValid()
     private String login;
     private String password;
 

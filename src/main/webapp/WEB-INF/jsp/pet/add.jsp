@@ -4,17 +4,20 @@
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
+Właściciel: ${ownerName} <br/>
 <form:form method="POST"
            modelAttribute="pet">
-    Nazwa: <form:input path="name"/>
+    Nazwa: <form:input path="name"/><br/>
     <form:errors path="name"/>
-    Płeć: <select path="gender" size="3" multiple="multiple" tabindex="1">
-        <option value="M">Male</option>
-        <option value="F">Female</option>
-    </select>
-    Numer chipa: <form:input path="chip"/>
-    <form:errors path="chip"/>
+    Płeć Male: <form:radiobutton path="gender" value="M"/>
+    Płeć Female: <form:radiobutton path="gender" value="F"/> <br />
+    Numer chipa: <form:input path="chipNumber"/><br/>
+    <form:errors path="chipNumber"/>
     Właściciel: <form:select path="owner" items="${allOwners}" itemLabel="login" itemValue="id" /> <br/>
-    Rasa: <form:select path="race" items="${allRaces}" itemLabel="race" itemValue="id" /> <br/>
+    Rasa: <form:select path="race" items="${allRaces}" itemLabel="name" itemValue="id" /> <br/>
+    Gatunek: <form:select path="petType" items="${allPetTypes}" itemLabel="name" itemValue="id" /> <br/>
     <input type="submit" value="Dodaj">
 </form:form>
+<br/>
+<a href="/home/index">Strona Główna</a> <br/>
+<a href="/owner/list">Lista właścicieli</a><br/>

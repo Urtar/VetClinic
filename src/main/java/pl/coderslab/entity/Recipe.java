@@ -16,8 +16,7 @@ public class Recipe {
     @OneToOne
     private Pet pet;
 
-    public Recipe(String description) {
-        this.description = description;
+    public Recipe() {
     }
 
     public long getId() {

@@ -4,6 +4,12 @@
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
-<div style="border: blue"><p>Nie masz uprawnień do zakładania, przeglądania i edytowania kont właścicieli</p></div>
-<br/>
-<a href="/vetclinic">Strona główna</a>
+<h1>Lista Weterynarzy</h1>
+
+<a href="/vet/add">Dodaj Weterynarza</a></br>
+
+<c:forEach items="${allVets}" var="vet">
+    Lekarz: <p>${vet.firstName} ${vet.lastName} ${vet.title} ${vet.login}</p></br>
+</c:forEach>
+
+<a href="/logout">Wylogowanie</a>
