@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.entity.Owner;
 import pl.coderslab.repository.OwnerRepository;
 import pl.coderslab.repository.PetRepository;
-import pl.coderslab.repository.PetTypeRepository;
-import pl.coderslab.repository.VisitRepository;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -25,12 +23,6 @@ public class VetController {
 
     @Autowired
     private PetRepository petRepository;
-
-    @Autowired
-    private VisitRepository visitRepository;
-
-    @Autowired
-    private PetTypeRepository typeRepository;
 
     @ModelAttribute("allOwners")
     public List<Owner> viewAllOwnersList() {

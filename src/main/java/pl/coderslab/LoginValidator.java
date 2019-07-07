@@ -21,8 +21,15 @@ public class LoginValidator implements ConstraintValidator<LoginValid, String> {
     }
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (ownerRepository.findByLogin(value) == null || vetRepository.findByLogin(value) == null || adminRepository.findByLogin(value) == null) {
+        try{if(ownerRepository.findByLogin(value).getLogin().equals(null) && vetRepository.findByLogin(value).getLogin().equals(null) && adminRepository.findByLogin(value).getLogin().equals(null));}
+        catch (NullPointerException e){
             return true;
-        } else return ownerRepository.findByLogin(value).getLogin() != value && vetRepository.findByLogin(value).getLogin() != value && adminRepository.findByLogin(value).getLogin() != value;
+        }
+        return false;
     }
 }
+//try{ownerRepository.findByLogin(value).getLogin(),
+//        vetRepository.findByLogin(value).getLogin(), adminRepository.findByLogin(value).getLogin())}
+//        catch (NullPointerException e){
+//        return true;
+//        }

@@ -18,7 +18,4 @@ public interface VisitRepository extends JpaRepository<Visit, Long> {
     Visit findByPet_IdAAndVisit_Id(@Param("petId")long petId, @Param(("visitId"))long visitId);
     Visit findById(long id);
 
-    //
-//    @Query("select v from Visit v where v.pet.name = :name")
-//    List<Visit> findAllByPetName(@Param("name")String name);
 }

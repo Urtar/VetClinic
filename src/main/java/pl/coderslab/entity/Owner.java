@@ -1,6 +1,7 @@
 package pl.coderslab.entity;
 
 import org.hibernate.validator.constraints.pl.PESEL;
+import pl.coderslab.LoginValid;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -22,7 +23,7 @@ public class Owner {
     @Email
     private String email;
     @Column(unique = true)
-    //@LoginValid()
+    @LoginValid()
     private String login;
     @NotEmpty
     private String password;

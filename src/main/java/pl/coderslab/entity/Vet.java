@@ -1,5 +1,7 @@
 package pl.coderslab.entity;
 
+import pl.coderslab.LoginValid;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
@@ -16,7 +18,7 @@ public class Vet {
     @NotEmpty
     private String title;
     @Column(unique = true)
-    //@LoginValid()
+    @LoginValid()
     private String login;
     private String password;
 

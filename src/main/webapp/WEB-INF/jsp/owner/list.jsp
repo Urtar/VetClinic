@@ -8,11 +8,13 @@
 
 <a href="/owner/add">Dodaj Właściciela</a><br/>
 <a href="/race/add">Dodaj rasę zwierzęcia</a><br/>
+<a href="/race/list">Lista ras zwierząt</a><br/>
 <a href="/pettype/add">Dodaj gatunek zwierzęcia</a><br/>
+<a href="/petType/list">Lista gatunków zwierząt</a><br/>
 
 <h1>Lista właścicieli:</h1>
 <c:forEach items="${allOwners}" var="owner">
-    <a href="/owner/${owner.id}"><p>Imię: ${owner.firstName}, Nazwisko: ${owner.lastName}</p></a>
+    <p><a href="/owner/${owner.id}">Imię: ${owner.firstName}, Nazwisko: ${owner.lastName}</a> , <a href="/owner/${owner.id}/edit">Edytuj dane właściciela</a><p/>
 <%--    Zwierzęta: <form:select path="pet" items="${allPets}" itemLabel="name" itemValue="id" /> <br/>--%>
 </c:forEach>
 

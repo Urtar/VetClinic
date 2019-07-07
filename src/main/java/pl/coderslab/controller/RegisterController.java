@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.entity.*;
 import pl.coderslab.repository.*;
 
@@ -26,10 +23,6 @@ public class RegisterController {
     private VetRepository vetRepository;
     @Autowired
     private PetRepository petRepository;
-    @Autowired
-    private VisitRepository visitRepository;
-    @Autowired
-    private PetTypeRepository typeRepository;
     @Autowired
     private RaceRepository raceRepository;
     @Autowired
@@ -55,6 +48,26 @@ public class RegisterController {
             return "redirect:/owner/brakUprawnien";
         }
     }
+    @GetMapping("owner/{id}/edit")
+    public String editOwner(Model model, @PathVariable("id") long id) {
+        model.addAttribute("owner", ownerRepository.findById(id).get());
+        return "owner/edit";
+    }
+
+    @PostMapping("owner/{id}/edit")
+    public String editOwner(@ModelAttribute @Valid Owner owner, BindingResult result,@ModelAttribute Admin admin, HttpSession httpSession) {
+        if (result.hasErrors()) {
+            return "owner/edit";
+        }
+        if (httpSession.getAttribute("loggedVet") != null) {
+            String hashedPassword = BCrypt.hashpw(owner.getPassword(), BCrypt.gensalt());
+            owner.setPassword(hashedPassword);
+            ownerRepository.saveAndFlush(owner);
+            return "redirect:/owner/list";
+        } else {
+            return "redirect:/owner/brakUprawnien";
+        }
+    }
 
     @GetMapping("vet/add")
     public String addVet(Model model) {
@@ -71,6 +84,26 @@ public class RegisterController {
             String hashedPassword = BCrypt.hashpw(vet.getPassword(), BCrypt.gensalt());
             vet.setPassword(hashedPassword);
             vetRepository.save(vet);
+            return "redirect:/login";
+        } else
+            return "redirect:/vet/brakUprawnien";
+    }
+
+    @GetMapping("vet/{id}/edit")
+    public String editVet(Model model, @PathVariable("id")long id) {
+        model.addAttribute("vet", vetRepository.findById(id));
+        return "vet/edit";
+    }
+
+    @PostMapping("vet/{id}/edit")
+    public String editVet(@ModelAttribute @Valid Vet vet,BindingResult result, HttpSession httpSession) {
+        if (result.hasErrors()) {
+            return "vet/edit";
+        }
+        if (httpSession.getAttribute("loggedAdmin") != null) {
+            String hashedPassword = BCrypt.hashpw(vet.getPassword(), BCrypt.gensalt());
+            vet.setPassword(hashedPassword);
+            vetRepository.saveAndFlush(vet);
             return "redirect:/login";
         } else
             return "redirect:/vet/brakUprawnien";
@@ -104,6 +137,7 @@ public class RegisterController {
             return "pet/add";
         }
         if (httpSession.getAttribute("loggedVet") != null) {
+            pet.setOwner(ownerRepository.findById((long)httpSession.getAttribute("ownerIdSess")).get());
            petRepository.save(pet);
             model.addAttribute("petId", pet.getId());
             return "redirect:/pet/list";
@@ -111,6 +145,26 @@ public class RegisterController {
             return "redirect:/vet/brakUprawnien";
     }
 
+    @GetMapping("pet/{id}/edit")
+    public String editPet(Model model, HttpSession httpSession , @PathVariable("id") long id) {
+        model.addAttribute("ownerName",ownerRepository.getOne((long)httpSession.getAttribute("ownerIdSess")).getFirstName());
+        model.addAttribute("pet", petRepository.findById(id).get());
+        return "pet/edit";
+    }
+
+    @PostMapping("pet/{id}/edit")
+    public String editPet(@ModelAttribute @Valid Pet pet,BindingResult result, HttpSession httpSession, Model model) {
+        if (result.hasErrors()) {
+            return "pet/edit";
+        }
+        if (httpSession.getAttribute("loggedVet") != null) {
+            pet.setOwner(ownerRepository.findById((long)httpSession.getAttribute("ownerIdSess")).get());
+            petRepository.saveAndFlush(pet);
+            model.addAttribute("petId", pet.getId());
+            return "redirect:/pet/list";
+        } else
+            return "redirect:/vet/brakUprawnien";
+    }
 
     @GetMapping("race/add")
     public String addRace(Model model) {

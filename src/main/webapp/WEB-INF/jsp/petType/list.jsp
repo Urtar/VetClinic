@@ -4,14 +4,10 @@
            uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
-<h1>Lista Zwierząt</h1>
+<h1>Lista gatunków zwierząt</h1>
 
-Właściciel: ${ownerName} <br/>
-
-<a href="/pet/add">Dodaj zwierzę</a></br>
-
-<c:forEach items="${allPets}" var="pet">
-    <p><a href="/pet/${pet.id}/details">${pet.name}</a>, <a href="/pet/${pet.id}/edit">Edytuj dane zwierzęcia</a><p/>
+<c:forEach items="${allPetTypes}" var="petType">
+    <p>${petType.name}, <a href="/petType/${petType.id}/edit">Edytuj nazwę gatunku</a><p/>
 </c:forEach>
 
 <a href="/logout">Wylogowanie</a>

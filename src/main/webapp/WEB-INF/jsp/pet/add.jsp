@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%@ taglib prefix="form"
            uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 Właściciel: ${ownerName} <br/>
 <form:form method="POST"
@@ -10,12 +10,11 @@ Właściciel: ${ownerName} <br/>
     Nazwa: <form:input path="name"/><br/>
     <form:errors path="name"/>
     Płeć Male: <form:radiobutton path="gender" value="M"/>
-    Płeć Female: <form:radiobutton path="gender" value="F"/> <br />
+    Płeć Female: <form:radiobutton path="gender" value="F"/> <br/>
     Numer chipa: <form:input path="chipNumber"/><br/>
     <form:errors path="chipNumber"/>
-    Właściciel: <form:select path="owner" items="${allOwners}" itemLabel="login" itemValue="id" /> <br/>
-    Rasa: <form:select path="race" items="${allRaces}" itemLabel="name" itemValue="id" /> <br/>
-    Gatunek: <form:select path="petType" items="${allPetTypes}" itemLabel="name" itemValue="id" /> <br/>
+    Rasa: <form:select path="race" items="${allRaces}" itemLabel="name" itemValue="id"/> <br/>
+    Gatunek: <form:select path="petType" items="${allPetTypes}" itemLabel="name" itemValue="id"/> <br/>
     <input type="submit" value="Dodaj">
 </form:form>
 <br/>

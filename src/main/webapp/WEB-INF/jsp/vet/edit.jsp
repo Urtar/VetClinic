@@ -7,14 +7,12 @@
 <form:form method="POST"
            modelAttribute="vet">
     Imię: <form:input path="firstName"/>
-    <form:errors path="firstName"/>
+    <form:errors path="firstName"/></br>
     Nazwisko: <form:input path="lastName"/>
-    <form:errors path="lastName"/>
+    <form:errors path="lastName"/></br>
     Tytuł naukowy: <form:input path="title"/>
-    <form:errors path="title"/>
-    Login: <form:input path="login"/>
-    <form:errors path="login"/>
-    Password: <form:input path="password"/>
-    <form:errors path="password"/>
+    <form:errors path="title"/></br>
+    Password: <form:input type="password" path="password" value="p"/>
+    <form:errors path="password"/></br>
     <input type="submit" value="Aktualizuj">
 </form:form>

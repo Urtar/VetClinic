@@ -8,7 +8,11 @@
            modelAttribute="visit">
     Lekarz: ${vetName} <br/>
     Imię zwierzęcia: ${petName} <br/>
-    Opis: ${visit.description}
+    Opis: ${visit.description} <br/>
+
+    <c:forEach items="${allVisitRecipes}" var="visitRecipe">
+        <p><a href="/recipe/${visitRecipe.id}/details">Szczegóły recepty z dnia ${visitRecipe.visit.dateOfVisit}</a>, <a href="/recipe/${visitRecipe.id}/edit">Edytuj receptę</a></p>
+    </c:forEach>
 
     <a href="/recipe/add">Dodaj receptę</a> <br/>
     <a href="/visit/list">Powrót do poprzedniej strony</a>

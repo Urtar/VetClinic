@@ -1,5 +1,7 @@
 package pl.coderslab.entity;
 
+import pl.coderslab.LoginValid;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 @Entity
@@ -9,7 +11,7 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Column(unique = true)
-    //@LoginValid()
+    @LoginValid()
     private String login;
     @NotEmpty
     private String password;

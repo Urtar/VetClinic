@@ -9,7 +9,7 @@
 <a href="/vet/add">Dodaj Weterynarza</a></br>
 
 <c:forEach items="${allVets}" var="vet">
-    Lekarz: <p>${vet.firstName} ${vet.lastName} ${vet.title} ${vet.login}</p></br>
+    Lekarz: <p>${vet.firstName} ${vet.lastName} ${vet.title} ${vet.login}, <a href="/vet/${vet.id}/edit">Edytuj dane weterynarza</a></p>
 </c:forEach>
 
 <a href="/logout">Wylogowanie</a>

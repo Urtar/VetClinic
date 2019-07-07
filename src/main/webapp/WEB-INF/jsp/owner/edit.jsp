@@ -7,16 +7,14 @@
 <form:form method="POST"
            modelAttribute="owner">
     Imię: <form:input path="firstName"/>
-    <form:errors path="firstName"/>
+    <form:errors path="firstName"/></br>
     Nazwisko: <form:input path="lastName"/>
-    <form:errors path="lastName"/>
+    <form:errors path="lastName"/></br>
     Email: <form:input path="email"/>
-    <form:errors path="email"/>
+    <form:errors path="email"/></br>
     PESEL: <form:input path="pesel"/>
-    <form:errors path="pesel"/>
-    Login: <form:input path="login"/>
-    <form:errors path="login"/>
-    Password: <form:input path="password"/>
+    <form:errors path="pesel"/></br>
+    Password: <form:input type="password" path="password" value="p"/>
     <form:errors path="password"/>
     <input type="submit" value="Aktualizuj">
 </form:form>

@@ -33,11 +33,11 @@ public class AuthenticationController {
             if (authenticationService.givenLoginExistInDatabaseOwner(viewMode.getLogin())) {
                 Owner owner = authenticationService.authenticateOwner(viewMode.getLogin(), viewMode.getPassword());
                 httpSession.setAttribute("loggedOwner", owner.getId());
-                return "redirect:/index";
+                return "redirect:/owner/petList";
             } else if (authenticationService.givenLoginExistInDatabaseVet(viewMode.getLogin())) {
                 Vet vet = authenticationService.authenticateVet(viewMode.getLogin(), viewMode.getPassword());
                 httpSession.setAttribute("loggedVet", vet.getId());
-                httpSession.setAttribute("vetName", vet.getFirstName() + ", " + vet.getLastName());
+               // httpSession.setAttribute("vetName", vet.getFirstName() + ", " + vet.getLastName());
                 return "redirect:/owner/list";
             } else if (authenticationService.givenLoginExistInDatabaseAdmin(viewMode.getLogin())) {
                 Admin admin = authenticationService.authenticateAdmin(viewMode.getLogin(), viewMode.getPassword());

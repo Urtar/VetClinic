@@ -11,6 +11,6 @@ import java.lang.annotation.Target;
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface LoginValid {
-    String message() default "{podany login już istnieje w bazie}";//"{startWith.error.message}";
+    String message() default "Podany login już istnieje w bazie, proszę wybierz inny.";//"{startWith.error.message}";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {}; }

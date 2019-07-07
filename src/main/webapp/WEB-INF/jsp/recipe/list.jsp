@@ -9,7 +9,7 @@
 <a href="/recipe/add">Dodaj receptę</a></br>
 
 <c:forEach items="${allVisitRecipes}" var="visitRecipe">
-    <a href="/recipe/${visitRecipe.id}/details"><p>Szczegóły recepty z dnia ${visitRecipe.visit.dateOfVisit}</p></a></br>
+    <p><a href="/recipe/${visitRecipe.id}/details">Szczegóły recepty z dnia ${visitRecipe.visit.dateOfVisit}</a>, <a href="/recipe/${visitRecipe.id}/edit">Edytuj receptę</a></p>
 </c:forEach>
 
 <a href="/logout">Wylogowanie</a> <br/>
